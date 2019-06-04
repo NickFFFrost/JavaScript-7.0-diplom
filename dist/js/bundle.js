@@ -244,54 +244,51 @@ function forms() {
   let formSend = (element) => {
 
     element.appendChild(statusMessage);
+    let contentFormPopup = element.querySelector(".content-form-popup");
 
-    function postData() {
+    let request = new XMLHttpRequest();
+    request.open("POST", "server.php");
+    request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
 
-      return new Promise(function (resolve, reject) {
+    let formData = new FormData(element);
 
-        let request = new XMLHttpRequest();
-        request.open("POST", "server.php");
-        request.setRequestHeader("Content-Type", "application/json; charset=utf-8");
+    let obj = {};
+    formData.forEach((value, key) => {
+      obj[key] = value;
+    });
 
-        let formData = new FormData(element);
+    let json = JSON.stringify(obj);
 
-        let obj = {};
-        formData.forEach((value, key) => {
-          obj[key] = value;
-        });
+    request.send(json);
 
-        let json = JSON.stringify(obj);
+    request.addEventListener("readystatechange", () => {
 
-        request.send(json);
+      if (request.readyState < 4) {
+        statusMessage.innerHTML = message.loading;
+      } else if (request.readyState === 4) {
 
-        request.addEventListener("readystatechange", () => {
-          if (request.readyState < 4) {
-            resolve();
-          } else if (request.readyState === 4) {
-            if (request.status == 200 && request.status < 3) {
-              resolve();
-            } else {
-              reject();
-            }
-          }
-        })
+        if (element.classList.contains("popup-form")) {
+          contentFormPopup.style.display = "none";
+          statusMessage.innerHTML = message.success;
+        } else {
+          statusMessage.innerHTML = message.success;
+        }
 
-      });
+      } else {
 
-    }
-
-    let clearInputs = () => {
-      for (let i = 0; i < element.length; i++) {
-        element[i].value = "";
+        if (element.classList.contains("popup-form")) {
+          contentFormPopup.style.display = "none";
+          statusMessage.innerHTML = message.failure;
+        } else {
+          statusMessage.innerHTML = message.failure;
+        }
+        
       }
+    });
+
+    for (let i = 0; i < element.length; i++) {
+      element[i].value = "";
     }
-
-    postData(formSend)
-      .then(() => (statusMessage.innerHTML = message.loading))
-      .then(() => (statusMessage.innerHTML = message.success))
-      .catch(() => (statusMessage.innerHTML = message.failure))
-      .then(clearInputs);
-
   };
 
   document.addEventListener("input", event => {

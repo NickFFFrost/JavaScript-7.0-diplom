@@ -630,12 +630,14 @@
 		<div class=popup-dialog>
 			<div class=popup-content>
 				<button class=popup-close>&times;</button>
+				<div class="content-form-popup"></div>
 				<h4>Остались вопросы? Закажите обратный звонок</h4>
 				<div class=main-form>
-					<form class=form action="#" method=POST>
+					<form class="form popup-form" action="#" method=POST>
 						<input type=text name=name placeholder="Ваше имя" required>
 						<input type=text name=phone placeholder="Ваш телефон" required>
 						<button type="submit" class="button button-order" onclick="yaCounter46630539.reachGoal('btn-consultation'); return true;">Получить консультацию</button>
+				</div>
 					</form>
 				</div>
 			</div>
@@ -655,7 +657,8 @@
 		<div class=popup-dialog>
 			<div class=popup-content>
 				<button class=popup-close>&times;</button>
-				<form action="#" method=POST enctype=multipart/form-data>
+				<form class="popup-form" action="#" method=POST enctype=multipart/form-data>
+					<div class="content-form-popup">
 					<h4>Заказать дизайн портрета</h4>
 					<div class=file_uploa>
 						<button type=button>Загрузить фотографию</button>
@@ -671,6 +674,7 @@
 							<button type="submit" class="button button-order">Отправить дизайнеру</button>
 						</div>
 					</div>
+				</div>
 				</form>
 			</div>
 		</div>
