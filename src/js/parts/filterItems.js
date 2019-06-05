@@ -6,14 +6,12 @@ function filterItems() {
       portfolioMenuLi = document.querySelectorAll(".portfolio-menu > li");
 
   portfolioMenu.addEventListener("click", event => {
-
-    let target = event.target,
-        noContent = true,
-        classActive = target.getAttribute("class");
-
     portfolioMenuLi.forEach((item) => {
       item.classList.remove("active");
     });
+    let target = event.target,
+        noContent = true,
+        classActive = target.getAttribute("class");
 
     target.classList.add("active");
 
