@@ -111,7 +111,6 @@ function accordeon() {
       titleAccordion[i].classList.toggle("ui-accordion-header-active");
     })
   }
-  console.log("модуль аккордеона");
 }
 
 module.exports = accordeon;
@@ -161,7 +160,6 @@ function calc() {
     }
   });
 
-  console.log("модуль калькулятора");
 }
 
 module.exports = calc;
@@ -214,7 +212,7 @@ function filterItems() {
     }
 
   });
-  console.log("модуль фильтра");
+
 }
 
 module.exports = filterItems;
@@ -270,6 +268,10 @@ function forms() {
         if (element.classList.contains("popup-form")) {
           contentFormPopup.style.display = "none";
           statusMessage.innerHTML = message.success;
+          setInterval( () => { 
+            contentFormPopup.style.display = "block";
+            element.removeChild(statusMessage);
+          },5000);
         } else {
           statusMessage.innerHTML = message.success;
         }
@@ -279,10 +281,14 @@ function forms() {
         if (element.classList.contains("popup-form")) {
           contentFormPopup.style.display = "none";
           statusMessage.innerHTML = message.failure;
+          setInterval( () => { 
+            contentFormPopup.style.display = "block";
+            element.removeChild(statusMessage);
+          },5000);
         } else {
           statusMessage.innerHTML = message.failure;
         }
-        
+
       }
     });
 
@@ -304,8 +310,6 @@ function forms() {
     event.preventDefault();
     formSend(event.target);
   });
-
-  console.log("модуль форм");
 
 }
 
@@ -356,7 +360,7 @@ function modals() {
       popupActive(popupGift, "none", "");
     }
   });
-  console.log("модуль модальных окон");
+  
 }
 
 module.exports = modals;
@@ -412,7 +416,7 @@ next.addEventListener("click", () => {
 setInterval( () => { 
   plusSlides(1);
 },5000);
-console.log("модуль слайдера");
+
 }
 
 module.exports = slider;

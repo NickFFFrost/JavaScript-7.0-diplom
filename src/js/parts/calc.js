@@ -33,7 +33,6 @@ function calc() {
     }
   });
 
-  console.log("модуль калькулятора");
 }
 
 module.exports = calc;

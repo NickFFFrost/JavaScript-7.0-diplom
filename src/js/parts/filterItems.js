@@ -37,7 +37,7 @@ function filterItems() {
     }
 
   });
-  console.log("модуль фильтра");
+
 }
 
 module.exports = filterItems;

@@ -34,7 +34,7 @@ function modals() {
       popupActive(popupGift, "none", "");
     }
   });
-  console.log("модуль модальных окон");
+  
 }
 
 module.exports = modals;

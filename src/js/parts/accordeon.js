@@ -16,7 +16,6 @@ function accordeon() {
       titleAccordion[i].classList.toggle("ui-accordion-header-active");
     })
   }
-  console.log("модуль аккордеона");
 }
 
 module.exports = accordeon;

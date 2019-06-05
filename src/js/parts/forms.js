@@ -39,6 +39,10 @@ function forms() {
         if (element.classList.contains("popup-form")) {
           contentFormPopup.style.display = "none";
           statusMessage.innerHTML = message.success;
+          setInterval( () => { 
+            contentFormPopup.style.display = "block";
+            element.removeChild(statusMessage);
+          },5000);
         } else {
           statusMessage.innerHTML = message.success;
         }
@@ -48,10 +52,14 @@ function forms() {
         if (element.classList.contains("popup-form")) {
           contentFormPopup.style.display = "none";
           statusMessage.innerHTML = message.failure;
+          setInterval( () => { 
+            contentFormPopup.style.display = "block";
+            element.removeChild(statusMessage);
+          },5000);
         } else {
           statusMessage.innerHTML = message.failure;
         }
-        
+
       }
     });
 
@@ -73,8 +81,6 @@ function forms() {
     event.preventDefault();
     formSend(event.target);
   });
-
-  console.log("модуль форм");
 
 }
 

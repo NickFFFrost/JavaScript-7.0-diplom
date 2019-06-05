@@ -40,7 +40,7 @@ next.addEventListener("click", () => {
 setInterval( () => { 
   plusSlides(1);
 },5000);
-console.log("модуль слайдера");
+
 }
 
 module.exports = slider;
